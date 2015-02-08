@@ -1,8 +1,8 @@
 //
 // Creator:    http://www.dicelocksecurity.com
-// Version:    vers.3.0.0.1
+// Version:    vers.4.0.0.1
 //
-// Copyright © 2009-2010 DiceLock Security, LLC. All rights reserved.
+// Copyright © 2009-2010 DiceLock Security, LLC. All rigths reserved.
 //
 //                               DISCLAIMER
 //
@@ -16,6 +16,9 @@
 // WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
 // OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 // ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+// 
+// DICELOCK IS A REGISTERED TRADEMARK OR TRADEMARK OF THE OWNERS.
+// 
 
 #ifndef SHA384_HPP
 
@@ -63,8 +66,8 @@ namespace DiceLockSecurity {
 			// Initial hash values of SHA512 
 			static const unsigned __int64 initials[SHA384_DIGESTULONGS];
 
-			// Pointer to DefaultCryptoRandomStream digest for SHA 384 hash algorithm
-			DefaultCryptoRandomStream* workingDigest512; 
+			// Pointer to BaseCryptoRandomStream digest for SHA 384 hash algorithm
+			BaseCryptoRandomStream* workingDigest512; 
 			
 			// Boolean pointing if meesaageDigest for SHA 512 has been created automatically
 			bool autoWorkingDigest;
@@ -114,5 +117,3 @@ namespace DiceLockSecurity {
 }
 
 #endif
-
-

@@ -203,6 +203,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\hashDigester.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\hashSuite.cpp"
 				>
 			</File>

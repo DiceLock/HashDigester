@@ -20,42 +20,6 @@
 // DICELOCK IS A REGISTERED TRADEMARK OR TRADEMARK OF THE OWNERS.
 // 
 
-#include <stdlib.h>
-#include "baseHash.h"
+#include "stdafx.h"
 
 
-namespace DiceLockSecurity {
-	
-  namespace Hash {
-	
-	// Constructor
-	BaseHash::BaseHash() {
-	}
-
-	// Constructor assigning digest BaseCryptoRandomStream 
-	BaseHash::BaseHash(BaseCryptoRandomStream* digest) {
- 
-		this->messageDigest = digest;
-	}
-
-	// Destructor
-	BaseHash::~BaseHash() {
-
-		if (this->messageDigest != NULL) {
-			this->messageDigest = NULL;
-		}
-	}
-
-	// Set the Digest Message BaseCryptoRandomStream
-	void BaseHash::SetMessageDigest(BaseCryptoRandomStream* digest) {
-
-		this->messageDigest = digest;
-	}
-
-	// Gets the hash 
-	BaseCryptoRandomStream* BaseHash::GetMessageDigest(void) {
-
-		return this->messageDigest;
-	}
-  }
-}

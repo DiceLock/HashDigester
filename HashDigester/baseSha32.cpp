@@ -1,8 +1,8 @@
 //
 // Creator:    http://www.dicelocksecurity.com
-// Version:    vers.3.0.0.1
+// Version:    vers.4.0.0.1
 //
-// Copyright © 2009-2010 DiceLock Security, LLC. All rights reserved.
+// Copyright © 2009-2010 DiceLock Security, LLC. All rigths reserved.
 //
 //                               DISCLAIMER
 //
@@ -16,6 +16,9 @@
 // WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
 // OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 // ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+// 
+// DICELOCK IS A REGISTERED TRADEMARK OR TRADEMARK OF THE OWNERS.
+// 
 
 #include <memory.h>
 #include "baseSha32.h"
@@ -69,8 +72,9 @@ namespace DiceLockSecurity {
 
 	// Adds the BaseCryptoRandomStream to the hash
 	void BaseSha32::Add(BaseCryptoRandomStream* stream) {
-		unsigned long int startStreamByte = 0, processBytes = 0;
+		unsigned long int startStreamByte = 0, processBytes = 0, startProcess = 0;
 		long int numBytes = 0;
+		unsigned long int i = 0;
 
 		// If bytes left from previous added stream, then they will be processed now with added data from new stream
 		if (this->remainingBytesLength) {
@@ -138,4 +142,3 @@ namespace DiceLockSecurity {
 	}
   }
 }
-
