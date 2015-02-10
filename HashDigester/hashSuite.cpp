@@ -1,8 +1,8 @@
 //
 // Creator:    http://www.dicelocksecurity.com
-// Version:    vers.5.0.0.1
+// Version:    vers.6.0.0.1
 //
-// Copyright © 2009-2011 DiceLock Security, LLC. All rights reserved.
+// Copyright © 2009-2012 DiceLock Security, LLC. All rights reserved.
 //
 //                               DISCLAIMER
 //
@@ -20,12 +20,9 @@
 // DICELOCK IS A REGISTERED TRADEMARK OR TRADEMARK OF THE OWNERS.
 // 
 
-#include <stdexcept>
+//#include <stdexcept>
 #include <stdlib.h>
 #include "hashSuite.h"
-
-
-using namespace std;
 
 
 namespace DiceLockSecurity {
@@ -37,9 +34,9 @@ namespace DiceLockSecurity {
 
 		// Constructor, default, initializes suite 
 		HashSuite::HashSuite() {
-			int i;
+			unsigned short int i;
 
-			for (i=this->GetFirstHash(); i<this->GetMaximumNumberOfHashes(); i++) {
+			for (i = this->GetFirstHash(); i < this->GetMaximumNumberOfHashes(); i++) {
 				this->suite[i] = NULL;
 				this->selfCreatedHash[i] = false;
 			}
@@ -48,10 +45,10 @@ namespace DiceLockSecurity {
 
 		// Destructor
 		HashSuite::~HashSuite() {
-			int i;
+			unsigned short int i;
 
-			for (i=this->GetFirstHash(); i<this->GetMaximumNumberOfHashes(); i++) {
-				if (this->suite[i] != NULL) {
+			for (i = this->GetFirstHash(); i < this->GetMaximumNumberOfHashes(); i++) {
+				if ((this->selfCreatedHash[i]) && (this->suite[i] != NULL)) {
 					delete this->suite[i];
 					this->suite[i] = NULL;
 				    this->selfCreatedHash[i] = false;
@@ -138,7 +135,7 @@ namespace DiceLockSecurity {
 
 		// Creates and adds all hash algorithms to the suite 
 		void HashSuite::AddAll(void) {
-			int i;
+			unsigned short int i;
 
 			this->suite[SHA_1] = new Sha1();
 			this->suite[SHA_224] = new Sha224();
@@ -149,7 +146,7 @@ namespace DiceLockSecurity {
 			this->suite[RIPEMD_160] = new Ripemd160();
 			this->suite[RIPEMD_256] = new Ripemd256();
 			this->suite[RIPEMD_320] = new Ripemd320();
-			for (i=this->GetFirstHash(); i<this->GetMaximumNumberOfHashes(); i++) {
+			for (i = this->GetFirstHash(); i < this->GetMaximumNumberOfHashes(); i++) {
 				this->selfCreatedHash[i] = true;
 			}
 			this->instantiatedHashes = NumberOfHashes;
@@ -322,7 +319,7 @@ namespace DiceLockSecurity {
 
 		// Removes all hash algorithms from the suite
 		void HashSuite::RemoveAll(void) {
-			int i;
+			unsigned short int i;
 
 			for (i=this->GetFirstHash(); i<this->GetMaximumNumberOfHashes(); i++) {
 				if (this->suite[i] != NULL) {
@@ -457,10 +454,10 @@ namespace DiceLockSecurity {
 
 		// Performs the hash algorithms of BaseCryptoRandomStream with all instantiated hash 
 		void HashSuite::Hash(BaseCryptoRandomStream* stream) {
-			int i;
+			unsigned short int i;
 			
 			this->Initialize();
-			for (i=this->GetFirstHash(); i<this->GetMaximumNumberOfHashes(); i++) {
+			for (i = this->GetFirstHash(); i < this->GetMaximumNumberOfHashes(); i++) {
 				if (this->suite[i] != NULL) {
 					this->suite[i]->Add(stream); 
 					this->suite[i]->Finalize(); 
@@ -472,9 +469,9 @@ namespace DiceLockSecurity {
 			
 		// Initializes all hash algorithms in the suite
 		void HashSuite::Initialize(void) {
-			int i;
+			unsigned short int i;
 			
-			for (i=this->GetFirstHash(); i<this->GetMaximumNumberOfHashes(); i++) {
+			for (i = this->GetFirstHash(); i < this->GetMaximumNumberOfHashes(); i++) {
 				if (this->suite[i] != NULL) {
 					this->suite[i]->Initialize();
 				}
@@ -485,9 +482,9 @@ namespace DiceLockSecurity {
 			
 		// Adds BaseCryptoRandomStream stream to hash algorithms in the suite
 		void HashSuite::Add(BaseCryptoRandomStream* stream) {
-			int i;
+			unsigned short int i;
 			
-			for (i=this->GetFirstHash(); i<this->GetMaximumNumberOfHashes(); i++) {
+			for (i = this->GetFirstHash(); i < this->GetMaximumNumberOfHashes(); i++) {
 				if (this->suite[i] != NULL) {
 					this->suite[i]->Add(stream);
 				}
@@ -498,9 +495,9 @@ namespace DiceLockSecurity {
 			
 		// Finalize hash algorithms in the suite
 		void HashSuite::Finalize(void) {
-			int i;
+			unsigned short int i;
 			
-			for (i=this->GetFirstHash(); i<this->GetMaximumNumberOfHashes(); i++) {
+			for (i = this->GetFirstHash(); i < this->GetMaximumNumberOfHashes(); i++) {
 				if (this->suite[i] != NULL) {
 					this->suite[i]->Finalize();
 				}

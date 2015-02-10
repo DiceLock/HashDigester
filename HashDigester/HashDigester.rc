@@ -27,8 +27,8 @@ LANGUAGE LANG_ENGLISH, SUBLANG_NEUTRAL
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 4,0,0,1
- PRODUCTVERSION 4,0,0,1
+ FILEVERSION 6,0,0,1
+ PRODUCTVERSION 6,0,0,1
  FILEFLAGSMASK 0x17L
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -46,13 +46,13 @@ BEGIN
             VALUE "Comments", "Dynamic link library to compute hash algorithms"
             VALUE "CompanyName", "DiceLock Security, LLC"
             VALUE "FileDescription", "Dll with the implmentation of hash algorithms SHA-1, SHA-224, SHA-256, SHA-384, SHA-512, Ripemd-128, Ripmed-160, Ripmed-256, Ripmed-320."
-            VALUE "FileVersion", "4, 0, 0, 1"
+            VALUE "FileVersion", "6, 0, 0, 1"
             VALUE "InternalName", "HashDigester"
-            VALUE "LegalCopyright", "Copyright (C) 2009-2011  DiceLock Security, LLC"
+            VALUE "LegalCopyright", "Copyright (C) 2009-2012  DiceLock Security, LLC"
             VALUE "LegalTrademarks", "DiceLock (R) is a registered trademark in the United States, European Community and others."
             VALUE "OriginalFilename", "HashDigester"
             VALUE "ProductName", "HashDigester"
-            VALUE "ProductVersion", "4, 0, 0, 1"
+            VALUE "ProductVersion", "6, 0, 0, 1"
         END
     END
     BLOCK "VarFileInfo"

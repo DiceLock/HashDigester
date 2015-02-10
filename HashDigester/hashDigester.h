@@ -1,8 +1,8 @@
 //
 // Creator:    http://www.dicelocksecurity.com
-// Version:    vers.5.0.0.1
+// Version:    vers.6.0.0.1
 //
-// Copyright © 2009-2011 DiceLock Security, LLC. All rights reserved.
+// Copyright © 2009-2012 DiceLock Security, LLC. All rights reserved.
 //
 //                               DISCLAIMER
 //
@@ -26,6 +26,7 @@
 
 #include "baseCryptoRandomStream.h"
 #include "defaultCryptoRandomStream.h"
+#include "physicalCryptoRandomStream.h"
 #include "ripemd128.h"
 #include "ripemd160.h"
 #include "ripemd256.h"
