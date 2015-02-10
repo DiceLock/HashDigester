@@ -1,8 +1,8 @@
 //
 // Creator:    http://www.dicelocksecurity.com
-// Version:    vers.4.0.0.1
+// Version:    vers.5.0.0.1
 //
-// Copyright © 2009-2010 DiceLock Security, LLC. All rigths reserved.
+// Copyright © 2009-2011 DiceLock Security, LLC. All rights reserved.
 //
 //                               DISCLAIMER
 //
@@ -105,7 +105,7 @@ namespace DiceLockSecurity {
 		g = digest->GetULPosition(6);
 		h = digest->GetULPosition(7);
 
-		for (i = 0; i < this->dataHashULs; i++) {
+		for (i = 0; i < this->hashBlockULs; i++) {
 			messageSchedule[i] = (stream[i*4] << 24) | (stream[i*4+1] << 16) | (stream[i*4+2] << 8) | (stream[i*4+3]);
 		}
 
@@ -151,6 +151,13 @@ namespace DiceLockSecurity {
 		this->remainingBytesLength = 0;
 		this->messageBitLengthHigh = 0;
 		this->messageBitLengthLow = 0;
+	}
+
+	// Finalizes hash and performs little endian transformation
+	void Sha256::Finalize(void) {
+
+		this->BaseSha32::Finalize();
+		this->SwapLittleEndian();
 	}
 
 	// Gets hash length in bits

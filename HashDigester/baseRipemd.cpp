@@ -1,8 +1,8 @@
 //
 // Creator:    http://www.dicelocksecurity.com
-// Version:    vers.4.0.0.1
+// Version:    vers.5.0.0.1
 //
-// Copyright © 2009-2010 DiceLock Security, LLC. All rigths reserved.
+// Copyright © 2009-2011 DiceLock Security, LLC. All rights reserved.
 //
 //                               DISCLAIMER
 //
@@ -28,6 +28,15 @@
 namespace DiceLockSecurity {
 	
   namespace Hash {
+
+	// Number of data bits to compute hash
+	const unsigned short int BaseRipemd::hashBlockBits = RIPEMD_BLOCKBITS;
+	// Number of data unsigned chars to compute hash
+	const unsigned short int BaseRipemd::hashBlockUCs = RIPEMD_BLOCKUCHARS;
+	// Number of data unsigned long shorts to compute hash
+	const unsigned short int BaseRipemd::hashBlockUSs = RIPEMD_BLOCKUSHORTS;
+	// Number of data unsigned long ints to compute hash
+	const unsigned short int BaseRipemd::hashBlockULs = RIPEMD_BLOCKULONGS;
 
 	// Constants for all RIPEMD algorithms
 	const unsigned long int BaseRipemd::constant0 = 0x00000000UL;
@@ -186,5 +195,30 @@ namespace DiceLockSecurity {
 			this->messageByteLengthHigh++;
 		this->messageByteLengthLow += byteLength;
 	}
-  }
+ 
+	// Gets the number of bits in the hash block to be hashed
+	unsigned short int BaseRipemd::GetBitHashBlockLength(void) {
+
+		return this->hashBlockBits;
+	}
+
+	// Gets the number of unsigned chars in the hash block to be hashed
+	unsigned short int BaseRipemd::GetUCHashBlockLength(void) {
+
+		return this->hashBlockUCs;
+	}
+
+	// Gets the number of unsigned short ints in the hash block to be hashed
+	unsigned short int BaseRipemd::GetUSHashBlockLength(void) {
+
+		return this->hashBlockUSs;
+	}
+
+	// Gets the number of unsigned long ints in the hash block to be hashed
+	unsigned short int BaseRipemd::GetULHashBlockLength(void) {
+
+		return this->hashBlockULs;
+	}
+
+ }
 }

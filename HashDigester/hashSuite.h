@@ -1,8 +1,8 @@
 //
 // Creator:    http://www.dicelocksecurity.com
-// Version:    vers.4.0.0.1
+// Version:    vers.5.0.0.1
 //
-// Copyright © 2009-2010 DiceLock Security, LLC. All rigths reserved.
+// Copyright © 2009-2011 DiceLock Security, LLC. All rights reserved.
 //
 //                               DISCLAIMER
 //
@@ -41,7 +41,7 @@ namespace DiceLockSecurity {
 
 		protected:
 
-			// Points the first hash algorithm in the suite
+			/// Points the first hash algorithm in the suite
 			static const	Hashes firstHash;
 
 			BaseHash*				suite[NumberOfHashes];
@@ -50,152 +50,152 @@ namespace DiceLockSecurity {
 
 		public:
 
-			// Constructor, default, initializes suite 
+			/// Constructor, default, initializes suite 
 			CLASS_DECLSPEC HashSuite();
 
-			// Destructor
+			/// Destructor
 			CLASS_DECLSPEC ~HashSuite();
 
 			// ADDING HASHES
 			
-			// Adds a hash to the suite
+			/// Adds a hash to the suite
 			CLASS_DECLSPEC void Add(BaseHash*);
 
-			// Creates and adds a hash to the suite based in the enumerated hash list
+			/// Creates and adds a hash to the suite based in the enumerated hash list
 			CLASS_DECLSPEC void Add(Hashes);
 
-			// Creates and adds all hash algorithms to the suite
+			/// Creates and adds all hash algorithms to the suite
 			CLASS_DECLSPEC void AddAll(void);
 
-			// Creates and adds the defined hash to the suite
+			/// Creates and adds the defined hash to the suite
 			CLASS_DECLSPEC void AddSha1(void);
 
-			// Creates and adds the defined hash to the suite
+			/// Creates and adds the defined hash to the suite
 			CLASS_DECLSPEC void AddSha224(void);
 
-			// Creates and adds the defined hash to the suite
+			/// Creates and adds the defined hash to the suite
 			CLASS_DECLSPEC void AddSha256(void);
 
-			// Creates and adds the defined hash to the suite
+			/// Creates and adds the defined hash to the suite
 			CLASS_DECLSPEC void AddSha384(void);
 
-			// Creates and adds the defined hash to the suite
+			/// Creates and adds the defined hash to the suite
 			CLASS_DECLSPEC void AddSha512(void);
 
-			// Creates and adds the defined hash to the suite
+			/// Creates and adds the defined hash to the suite
 			CLASS_DECLSPEC void AddRipemd128(void);
 
-			// Creates and adds the defined hash to the suite
+			/// Creates and adds the defined hash to the suite
 			CLASS_DECLSPEC void AddRipemd160(void);
 
-			// Creates and adds the defined hash to the suite
+			/// Creates and adds the defined hash to the suite
 			CLASS_DECLSPEC void AddRipemd256(void);
 
-			// Creates and adds the defined hash to the suite
+			/// Creates and adds the defined hash to the suite
 			CLASS_DECLSPEC void AddRipemd320(void);
 
 			// GETTING HASH OBJECT
 			
-			// Gets a hash algorithm from the suite based in the enumerated hash
+			/// Gets a hash algorithm from the suite based in the enumerated hash
 			CLASS_DECLSPEC BaseHash* GetMessageDigest(Hashes);
 
-			// Gets the defined hash from the suite
+			/// Gets the defined hash from the suite
 			CLASS_DECLSPEC Sha1* GetSha1(void);
 
-			// Gets the defined hash from the suite
+			/// Gets the defined hash from the suite
 			CLASS_DECLSPEC Sha224* GetSha224(void);
 
-			// Gets the defined hash from the suite
+			/// Gets the defined hash from the suite
 			CLASS_DECLSPEC Sha256* GetSha256(void);
 
-			// Gets the defined hash from the suite
+			/// Gets the defined hash from the suite
 			CLASS_DECLSPEC Sha384* GetSha384(void);
 
-			// Gets the defined hash from the suite
+			/// Gets the defined hash from the suite
 			CLASS_DECLSPEC Sha512* GetSha512(void);
 
-			// Gets the defined hash from the suite
+			/// Gets the defined hash from the suite
 			CLASS_DECLSPEC Ripemd128* GetRipemd128(void);
 
-			// Gets the defined hash from the suite
+			/// Gets the defined hash from the suite
 			CLASS_DECLSPEC Ripemd160* GetRipemd160(void);
 
-			// Gets the defined hash from the suite
+			/// Gets the defined hash from the suite
 			CLASS_DECLSPEC Ripemd256* GetRipemd256(void);
 
-			// Gets the defined hash from the suite
+			/// Gets the defined hash from the suite
 			CLASS_DECLSPEC Ripemd320* GetRipemd320(void);
 
 			// REMOVING HASH ALGORITHMS
 
-			// Removes the pointed hash from the suite
+			/// Removes the pointed hash from the suite
 			CLASS_DECLSPEC void Remove(BaseHash*);
 
-			// Removes a hash from the suite based in the enumerated hash algorithms
+			/// Removes a hash from the suite based in the enumerated hash algorithms
 			CLASS_DECLSPEC void Remove(Hashes);
 
-			// Removes all hash algorithms from the suite
+			/// Removes all hash algorithms from the suite
 			CLASS_DECLSPEC void RemoveAll(void);
 
-			// Removes the defined hash from the suite
+			/// Removes the defined hash from the suite
 			CLASS_DECLSPEC void RemoveSha1(void);
 
-			// Removes the defined hash from the suite
+			/// Removes the defined hash from the suite
 			CLASS_DECLSPEC void RemoveSha224(void);
 
-			// Removes the defined hash from the suite
+			/// Removes the defined hash from the suite
 			CLASS_DECLSPEC void RemoveSha256(void);
 
-			// Removes the defined hash from the suite
+			/// Removes the defined hash from the suite
 			CLASS_DECLSPEC void RemoveSha384(void);
 
-			// Removes the defined hash from the suite
+			/// Removes the defined hash from the suite
 			CLASS_DECLSPEC void RemoveSha512(void);
 
-			// Removes the defined hash from the suite
+			/// Removes the defined hash from the suite
 			CLASS_DECLSPEC void RemoveRipemd128(void);
 
-			// Removes the defined hash from the suite
+			/// Removes the defined hash from the suite
 			CLASS_DECLSPEC void RemoveRipemd160(void);
 
-			// Removes the defined hash from the suite
+			/// Removes the defined hash from the suite
 			CLASS_DECLSPEC void RemoveRipemd256(void);
 
-			// Removes the defined hash from the suite
+			/// Removes the defined hash from the suite
 			CLASS_DECLSPEC void RemoveRipemd320(void);
 
 			// PERFORMING HASH
 
-			// Performs the hash algorithms of BaseCryptoRandomStream with all instantiated hash 
+			/// Performs the hash algorithms of BaseCryptoRandomStream with all instantiated hash 
 			CLASS_DECLSPEC void Hash(BaseCryptoRandomStream*);
 
 			// INITIALIZE SUITE
 			
-			// Initializes all hash algorithms in the suite
+			/// Initializes all hash algorithms in the suite
 			CLASS_DECLSPEC void Initialize(void);
 
 			// ADDS STREAM TO THE SUITE
 			
-			// Adds BaseCryptoRandomStream stream to hash algorithms in the suite
+			/// Adds BaseCryptoRandomStream stream to hash algorithms in the suite
 			CLASS_DECLSPEC void Add(BaseCryptoRandomStream*);
 
 			// FINALIZE THE SUITE
 			
-			// Finalize hash algorithms in the suite
+			/// Finalize hash algorithms in the suite
 			CLASS_DECLSPEC void Finalize(void);
 
 			// GETTING SUITE INFORMATION
 
-			// Gets the number of hash algorithms that contains the suite
+			/// Gets the number of hash algorithms that contains the suite
 			CLASS_DECLSPEC unsigned long int GetInstantiatedHashes(void);
 
-			// Indicates if a hash algorithm exists in the suite
+			/// Indicates if a hash algorithm exists in the suite
 			CLASS_DECLSPEC bool Exist(Hashes);
 
-			// Gets the first hash algorithm in the HashSuite
+			/// Gets the first hash algorithm in the HashSuite
 			CLASS_DECLSPEC Hashes GetFirstHash(void);
 
-			// Gets the number of hash algorithms that can be used in the HahsSuite
+			/// Gets the number of hash algorithms that can be used in the HahsSuite
 			CLASS_DECLSPEC Hashes GetMaximumNumberOfHashes(void);
 	};
   }

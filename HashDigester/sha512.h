@@ -1,8 +1,8 @@
 //
 // Creator:    http://www.dicelocksecurity.com
-// Version:    vers.4.0.0.1
+// Version:    vers.5.0.0.1
 //
-// Copyright © 2009-2010 DiceLock Security, LLC. All rigths reserved.
+// Copyright © 2009-2011 DiceLock Security, LLC. All rights reserved.
 //
 //                               DISCLAIMER
 //
@@ -39,11 +39,11 @@
 #define SHA512_DIGESTULONGS  16   // 16  hash unsigned long ints
 #define SHA512_DIGESTULG64S  8    // 8   hash unsigned 64 bits
 
-#define SHA512_DATABITS    1024    // 1024 block bits
-#define SHA512_DATAUCHARS  128     // 128  block unsigned chars
-#define SHA512_DATAUSHORTS 64      // 64   block unsigned longs ints
-#define SHA512_DATAULONGS  32      // 32   block unsigned longs ints
-#define SHA512_DATAULG64S  16      // 16   block unsigned 64 bits
+#define SHA512_BLOCKBITS    1024    // 1024 block bits
+#define SHA512_BLOCKUCHARS  128     // 128  block unsigned chars
+#define SHA512_BLOCKUSHORTS 64      // 64   block unsigned longs ints
+#define SHA512_BLOCKULONGS  32      // 32   block unsigned longs ints
+#define SHA512_BLOCKULG64S  16      // 16   block unsigned 64 bits
 
 #define SHA512_EQUATIONMODULO  896
 
@@ -68,97 +68,111 @@ namespace DiceLockSecurity {
 
 		private:
 
-			// Hash Algorithms Class enumerator name
+			/// Hash Algorithms Class enumerator name
 			static const Hashes	hashName;
 
-			// Number of hash bits
+			/// Number of hash bits
 			static const unsigned short int hashBits;
-			// Number of hash unsigned chars
+			/// Number of hash unsigned chars
 			static const unsigned short int hashUCs;
-			// Number of hash unsigned short ints
+			/// Number of hash unsigned short ints
 			static const unsigned short int hashUSs;
-			// Number of hash unsigned long ints
+			/// Number of hash unsigned long ints
 			static const unsigned short int hashULs;
-			// Number of hash unsigned 64 bits
+			/// Number of hash unsigned 64 bits
 			static const unsigned short int hash64s;
 
-			// Number of schedule words
+			/// Number of schedule words
 			static const unsigned short int scheduleNumber;
 
-			// Initial hash values of SHA512 
+			/// Initial hash values of SHA512 
 			static const unsigned __int64 initials[SHA512_DIGESTULONGS];
 
-			// Computational constant values of SHA512 
+			/// Computational constant values of SHA512 
 			static const unsigned __int64 constants[SHA512_COMPUTECONSTANTS];
 
-			// Message schedule words for SHA512 
+			/// Message schedule words for SHA512 
 			unsigned __int64 messageSchedule[SHA512_MESSAGESCHEDULE];
 
 		protected:
 
-			// Number of data bits to compute hash
-			static const unsigned short int dataHashBits;
-			// Number of data unsigned chars to compute hash
-			static const unsigned short int dataHashUCs;
-			// Number of data unsigned long integers to compute hash
-			static const unsigned short int dataHashULs;
-			// Number of data unsigned 64 bit to compute hash
-			static const unsigned short int dataHash64s;
+			/// Number of block bits to compute hash
+			static const unsigned short int hashBlockBits;
+			/// Number of block unsigned chars to compute hash
+			static const unsigned short int hashBlockUCs;
+			/// Number of block unsigned short ints to compute hash
+			static const unsigned short int hashBlockUSs;
+			/// Number of block unsigned long ints to compute hash
+			static const unsigned short int hashBlockULs;
+			/// Number of block unsigned 64 bit to compute hash
+			static const unsigned short int hashBlock64s;
 
-			// Equation modulo constant value
+			/// Equation modulo constant value
 			static const unsigned short int equationModulo;
 
-			// Array to store remaining bytes of intermediate hash operation
-			unsigned char remainingBytes[SHA512_DATAUCHARS];
+			/// Array to store remaining bytes of intermediate hash operation
+			unsigned char remainingBytes[SHA512_BLOCKUCHARS];
 			unsigned long int remainingBytesLength;
 
-			// Total processed message length in bytes
+			/// Total processed message length in bytes
 			unsigned __int64 messageBitLengthHigh;
 			unsigned __int64 messageBitLengthLow;
 
-			// Adds messaage length processed, if it is greater than unsigned long makes use
-			// of another unsigned long to store overflow
+			/// Adds messaage length processed, if it is greater than unsigned long makes use
+			/// of another unsigned long to store overflow
 			CLASS_DECLSPEC void AddMessageLength(unsigned long int);
 
-			// Gets the number of unsigned chars in the hash block to be hashed
-			CLASS_DECLSPEC unsigned short int GetDataHashUCs(void);
-
-			// Computes the chunk block of information  
+			/// Computes the chunk block of information  
 			CLASS_DECLSPEC void Compress(BaseCryptoRandomStream*, unsigned char*);
+
+			/// Swap bytes for little endian
+			CLASS_DECLSPEC void SwapLittleEndian(void);
 
 		public:
 
-			// Constructor, default 
+			/// Constructor, default 
 			CLASS_DECLSPEC Sha512();
 
-			// Destructor
+			/// Destructor
 			CLASS_DECLSPEC ~Sha512();
 
-			// Initializes common states of Sha1 algorithm
+			/// Initializes common states of Sha1 algorithm
 			CLASS_DECLSPEC void Initialize(void);
 
-			// Adds the BaseCryptoRandomStream to the hash
+			/// Adds the BaseCryptoRandomStream to the hash
 			CLASS_DECLSPEC void Add(BaseCryptoRandomStream*);
 
-			// Finalize the hash
+			/// Finalize the hash
 			CLASS_DECLSPEC void Finalize(void);
 
-			// Gets hash length in bits
+			/// Gets hash length in bits
 			CLASS_DECLSPEC unsigned short int GetBitHashLength(void);
 
-			// Gets hash length in unsigned chars
+			/// Gets hash length in unsigned chars
 			CLASS_DECLSPEC unsigned short int GetUCHashLength(void);
 
-			// Gets hash length in unsigned short ints
+			/// Gets hash length in unsigned short ints
 			CLASS_DECLSPEC unsigned short int GetUSHashLength(void);
 
-			// Gets hash length in unsigned long ints
+			/// Gets hash length in unsigned long ints
 			CLASS_DECLSPEC unsigned short int GetULHashLength(void);
 
-			// Gets hash length in unsigned 64 bits
+			/// Gets hash length in unsigned 64 bits
 			CLASS_DECLSPEC unsigned short int Get64HashLength(void);
 
-			// Gets the type of the object
+			/// Gets the number of bits in the hash block to be hashed
+			CLASS_DECLSPEC unsigned short int GetBitHashBlockLength(void);
+
+			/// Gets the number of unsigned chars in the hash block to be hashed
+			CLASS_DECLSPEC unsigned short int GetUCHashBlockLength(void);
+
+			/// Gets the number of unsigned short ints in the hash block to be hashed
+			CLASS_DECLSPEC unsigned short int GetUSHashBlockLength(void);
+
+			/// Gets the number of unsigned long ints in the hash block to be hashed
+			CLASS_DECLSPEC unsigned short int GetULHashBlockLength(void);
+
+			/// Gets the type of the object
 			CLASS_DECLSPEC Hashes GetType(void);
 	};
   }

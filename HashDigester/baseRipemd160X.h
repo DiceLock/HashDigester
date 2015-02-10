@@ -1,8 +1,8 @@
 //
 // Creator:    http://www.dicelocksecurity.com
-// Version:    vers.4.0.0.1
+// Version:    vers.5.0.0.1
 //
-// Copyright © 2009-2010 DiceLock Security, LLC. All rigths reserved.
+// Copyright © 2009-2011 DiceLock Security, LLC. All rights reserved.
 //
 //                               DISCLAIMER
 //
@@ -49,57 +49,57 @@ namespace DiceLockSecurity {
 
 		protected:
 
-			// Constants for 160 and 320 RIPEMD algorithms
+			/// Constants for 160 and 320 RIPEMD algorithms
 			static const unsigned long int constant4;
 			static const unsigned long int constant8;
 
-			// Amounts of rotate left
+			/// Amounts of rotate left
 			static const unsigned short int rl_64_79[16];
-			// Amounts of prime rotate left 
+			/// Amounts of prime rotate left 
 			static const unsigned short int prime_rl_64_79[16];
 
-			// Initial states of Ripemd 160 and 320 algorithms
+			/// Initial states of Ripemd 160 and 320 algorithms
 			static const unsigned long int inistate4;
 
-			// First transform set
+			/// First transform set
 			CLASS_DECLSPEC void Transform_F0(unsigned long int*, unsigned long int*, unsigned long int*, unsigned long int*, unsigned long int*, unsigned long int*);
 
-			// Second transform set
+			/// Second transform set
 			CLASS_DECLSPEC void Transform_G1(unsigned long int*, unsigned long int*, unsigned long int*, unsigned long int*, unsigned long int*, unsigned long int*);
 
-			// Third transform set
+			/// Third transform set
 			CLASS_DECLSPEC void Transform_H2(unsigned long int*, unsigned long int*, unsigned long int*, unsigned long int*, unsigned long int*, unsigned long int*);
 
-			// Fourth transform set
+			/// Fourth transform set
 			CLASS_DECLSPEC void Transform_I3(unsigned long int*, unsigned long int*, unsigned long int*, unsigned long int*, unsigned long int*, unsigned long int*);
 
-			// Fifth transform set
+			/// Fifth transform set
 			CLASS_DECLSPEC void Transform_J4(unsigned long int*, unsigned long int*, unsigned long int*, unsigned long int*, unsigned long int*, unsigned long int*);
 
-			// Sixth transform set
+			/// Sixth transform set
 			CLASS_DECLSPEC void Transform_J5(unsigned long int*, unsigned long int*, unsigned long int*, unsigned long int*, unsigned long int*, unsigned long int*);
 
-			// Seventh transform set
+			/// Seventh transform set
 			CLASS_DECLSPEC void Transform_I6(unsigned long int*, unsigned long int*, unsigned long int*, unsigned long int*, unsigned long int*, unsigned long int*);
 
-			// Eighth transform set
+			/// Eighth transform set
 			CLASS_DECLSPEC void Transform_H7(unsigned long int*, unsigned long int*, unsigned long int*, unsigned long int*, unsigned long int*, unsigned long int*);
 
-			// Ninth transform set
+			/// Ninth transform set
 			CLASS_DECLSPEC void Transform_G8(unsigned long int*, unsigned long int*, unsigned long int*, unsigned long int*, unsigned long int*, unsigned long int*);
 
-			// Tenth transform set
+			/// Tenth transform set
 			CLASS_DECLSPEC void Transform_F9(unsigned long int*, unsigned long int*, unsigned long int*, unsigned long int*, unsigned long int*, unsigned long int*);
 
 		public:
 
-			// Constructor, default 
+			/// Constructor, default 
 			CLASS_DECLSPEC BaseRipemd160X();
 
-			// Destructor
+			/// Destructor
 			CLASS_DECLSPEC ~BaseRipemd160X();
 
-			// Initializes state of Ripmed 160 and 320 algorithms
+			/// Initializes state of Ripmed 160 and 320 algorithms
 			CLASS_DECLSPEC void Initialize(void);
 	  };
   }

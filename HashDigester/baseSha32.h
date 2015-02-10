@@ -1,8 +1,8 @@
 //
 // Creator:    http://www.dicelocksecurity.com
-// Version:    vers.4.0.0.1
+// Version:    vers.5.0.0.1
 //
-// Copyright © 2009-2010 DiceLock Security, LLC. All rigths reserved.
+// Copyright © 2009-2011 DiceLock Security, LLC. All rights reserved.
 //
 //                               DISCLAIMER
 //
@@ -36,9 +36,10 @@
 #define BASESHA_32_Ch(x, y, z) ((x & y) ^ ((~x) & z))
 #define BASESHA_32_Maj(x, y, z) ((x & y) ^ (x & z) ^ (y & z))
 
-#define BASESHA_32_DATABITS   512    // 512 block bits
-#define BASESHA_32_DATAUCHARS 64     // 64  block unsigned chars
-#define BASESHA_32_DATAULONGS 16     // 16  block unsigned longs
+#define BASESHA_32_BLOCKBITS    512    // 512 block bits
+#define BASESHA_32_BLOCKUCHARS  64     // 64  block unsigned chars
+#define BASESHA_32_BLOCKUSHORTS 32     // 32  block unsigned shorts
+#define BASESHA_32_BLOCKULONGS  16     // 16  block unsigned longs
 
 #define BASESHA_32_EQUATIONMODULO  448
 
@@ -51,47 +52,61 @@ namespace DiceLockSecurity {
 
 		protected:
 
-			// Number of data bits to compute hash
-			static const unsigned short int dataHashBits;
-			// Number of data unsigned chars to compute hash
-			static const unsigned short int dataHashUCs;
-			// Number of data unsigned long integers to compute hash
-			static const unsigned short int dataHashULs;
+			/// Number of block bits to compute hash
+			static const unsigned short int hashBlockBits;
+			/// Number of block unsigned chars to compute hash
+			static const unsigned short int hashBlockUCs;
+			/// Number of block unsigned short ints to compute hash
+			static const unsigned short int hashBlockUSs;
+			/// Number of block unsigned long ints to compute hash
+			static const unsigned short int hashBlockULs;
 
-			// Equation modulo constant value
+			/// Equation modulo constant value
 			static const unsigned short int equationModulo;
 
-			// Array to store remaining bytes of intermediate hash operation
-			unsigned char remainingBytes[BASESHA_32_DATAUCHARS];
+			/// Array to store remaining bytes of intermediate hash operation
+			unsigned char remainingBytes[BASESHA_32_BLOCKUCHARS];
 			unsigned long int remainingBytesLength;
 
-			// Total processed message length in bytes
+			/// Total processed message length in bytes
 			unsigned long int messageBitLengthHigh;
 			unsigned long int messageBitLengthLow;
 
-			// Gets the number of unsigned chars in the hash block to be hashed
-			CLASS_DECLSPEC unsigned short int GetDataHashUCs(void);
-
-			// Adds messaage length processed, if it is greater than unsigned long makes use
-			// of another usigned long to store overflow
+			/// Adds messaage length processed, if it is greater than unsigned long makes use
+			/// of another usigned long to store overflow
 			CLASS_DECLSPEC void AddMessageLength(unsigned long int);
 
-			// Computes the chunk block of information  
+			/// Computes the chunk block of information  
 			CLASS_DECLSPEC virtual void Compress(BaseCryptoRandomStream*, unsigned char*) {};
+
+			/// Swap bytes for little endian
+			CLASS_DECLSPEC void SwapLittleEndian(void);
 
 		public:
 
-			// Constructor, default 
+			/// Constructor, default 
 			CLASS_DECLSPEC BaseSha32();
 
-			// Destructor
+			/// Destructor
 			CLASS_DECLSPEC ~BaseSha32();
 
-			// Adds the BaseCryptoRandomStream to the hash
+			/// Adds the BaseCryptoRandomStream to the hash
 			CLASS_DECLSPEC void Add(BaseCryptoRandomStream*);
 
-			// Finalize the hash
+			/// Finalize the hash
 			CLASS_DECLSPEC void Finalize(void);
+
+			/// Gets the number of bits in the hash block to be hashed
+			CLASS_DECLSPEC unsigned short int GetBitHashBlockLength(void);
+
+			/// Gets the number of unsigned chars in the hash block to be hashed
+			CLASS_DECLSPEC unsigned short int GetUCHashBlockLength(void);
+
+			/// Gets the number of unsigned short ints in the hash block to be hashed
+			CLASS_DECLSPEC unsigned short int GetUSHashBlockLength(void);
+
+			/// Gets the number of unsigned long ints in the hash block to be hashed
+			CLASS_DECLSPEC unsigned short int GetULHashBlockLength(void);
 	};
   }
 }

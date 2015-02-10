@@ -1,8 +1,8 @@
 //
 // Creator:    http://www.dicelocksecurity.com
-// Version:    vers.4.0.0.1
+// Version:    vers.5.0.0.1
 //
-// Copyright © 2009-2010 DiceLock Security, LLC. All rigths reserved.
+// Copyright © 2009-2011 DiceLock Security, LLC. All rights reserved.
 //
 //                               DISCLAIMER
 //
@@ -50,63 +50,72 @@ namespace DiceLockSecurity {
 
 		private:
 
-			// Hash Algorithms Class enumerator name
+			/// Hash Algorithms Class enumerator name
 			static const Hashes	hashName;
 
-			// Number of hash bits
+			/// Number of hash bits
 			static const unsigned short int hashBits;
-			// Number of hash unsigned chars
+			/// Number of hash unsigned chars
 			static const unsigned short int hashUCs;
-			// Number of hash unsigned short ints
+			/// Number of hash unsigned short ints
 			static const unsigned short int hashUSs;
-			// Number of hash unsigned long ints
+			/// Number of hash unsigned long ints
 			static const unsigned short int hashULs;
 
-			// Initial hash values of SHA256 
+			/// Initial hash values of SHA256 
 			static const unsigned long int initials[SHA256_DIGESTULONGS];
 
-			// Pointer to BaseCryptoRandomStream digest for SHA 256 hash algorithm
+			/// Pointer to BaseCryptoRandomStream digest for SHA 256 hash algorithm
 			BaseCryptoRandomStream* workingDigest256; 
 			
-			// Boolean pointing if meesaageDigest for SHA 256 has been created automatically
+			/// Boolean pointing if meesaageDigest for SHA 256 has been created automatically
 			bool autoWorkingDigest;
 			
 		public:
 
-			// Constructor, default 
+			/// Constructor, default 
 			CLASS_DECLSPEC Sha224();
 
-			// Destructor
+			/// Destructor
 			CLASS_DECLSPEC ~Sha224();
 
-			// Set the Working Digest  BaseCryptoRandomStream for underlaying SHA256 algorithm
+			/// Set the Working Digest  BaseCryptoRandomStream for underlaying SHA256 algorithm
 			CLASS_DECLSPEC void SetWorkingDigest(BaseCryptoRandomStream*);
 
-			// Set the Working Digest  BaseCryptoRandomStream for underlaying SHA256 algorithm
+			/// Get the Working Digest  BaseCryptoRandomStream for underlaying SHA256 algorithm length in bits
+			CLASS_DECLSPEC unsigned short int GetWorkingDigestBitLength(void);
+
+			/// Get the Working Digest  BaseCryptoRandomStream for underlaying SHA256 algorithm length in unsigned chars
 			CLASS_DECLSPEC unsigned short int GetWorkingDigestUCLength(void);
 
-			// Initializes common states of Sha1 algorithm
+			/// Get the Working Digest  BaseCryptoRandomStream for underlaying SHA256 algorithm length in unsigned short ints
+			CLASS_DECLSPEC unsigned short int GetWorkingDigestUSLength(void);
+
+			/// Get the Working Digest  BaseCryptoRandomStream for underlaying SHA256 algorithm length in unsigned long ints
+			CLASS_DECLSPEC unsigned short int GetWorkingDigestULLength(void);
+
+			/// Initializes common states of Sha1 algorithm
 			CLASS_DECLSPEC void Initialize(void);
 
-			// Adds the BaseCryptoRandomStream to the hash
+			/// Adds the BaseCryptoRandomStream to the hash
 			CLASS_DECLSPEC void Add(BaseCryptoRandomStream*);
 
-			// Finalize the hash
+			/// Finalize the hash
 			CLASS_DECLSPEC void Finalize(void);
 
-			// Gets hash length in bits
+			/// Gets hash length in bits
 			CLASS_DECLSPEC unsigned short int GetBitHashLength(void);
 
-			// Gets hash length in unsigned chars
+			/// Gets hash length in unsigned chars
 			CLASS_DECLSPEC unsigned short int GetUCHashLength(void);
 
-			// Gets hash length in unsigned short ints
+			/// Gets hash length in unsigned short ints
 			CLASS_DECLSPEC unsigned short int GetUSHashLength(void);
 
-			// Gets hash length in unsigned long ints
+			/// Gets hash length in unsigned long ints
 			CLASS_DECLSPEC unsigned short int GetULHashLength(void);
 
-			// Gets the type of the object
+			/// Gets the type of the object
 			CLASS_DECLSPEC Hashes GetType(void);
 	};
   }
